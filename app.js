@@ -60,6 +60,10 @@ app.use(require("./middlewares/exposeFlashMessage")); // affiche les messages da
 const index = require("./routes/index");
 app.use("/", index);
 
+// routers
+const auth = require("./routes/auth");
+app.use("/", auth);
+
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
