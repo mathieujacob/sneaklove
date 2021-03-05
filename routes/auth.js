@@ -4,11 +4,9 @@ const User = require("./../models/User");
 const bcrypt = require("bcrypt");
 
 
-router.get("/signin", (req, res, next) => {
-    console.log("je suis sur signin");
-    res.render("/signin");
+  router.get("/signin", (req, res) => {
+    res.render("signin");
   });
-
 
   router.post("/signin", async (req, res, next) => {
     console.log("je suis dans le post");
@@ -35,27 +33,34 @@ router.get("/signin", (req, res, next) => {
     }
   });
 
+  // router.get("/signup", (req, res) => {
+  //   res.render("signup");
+  // });
+  
+  
 router.get("/signup", async (req, res, next) => {
     console.log("je suis dans le get signup");
-  res.render("/signup");
-
+  res.render("signup");
 });
 
 router.post("/signup", async (req, res, next) => {
+  
   try {
     const newUser = { ...req.body };
     const foundUser = await User.findOne({ email: newUser.email });
-
+    
     if (foundUser) {
-        console.log("deja redirect");
+      
       req.flash("warning", "Email already registered");
-      res.redirect("/signup");
-    } else {
-      const hashedPassword = bcrypt.hashSync(newUser.password, 10);
-      newUser.password = hashedPassword;
-      await User.create(newUser);
-      req.flash("success", "Congrats ! You are now registered !");
       res.redirect("/signin");
+    } else {
+      // const hashedPassword = bcrypt.hashSync(newUser.password, 10);
+      // newUser.password = hashedPassword;
+     
+      await User.create(newUser);
+      console.log("deja redirect");
+      req.flash("success", "Congrats ! You are now registered !");
+      res.redirect("/");
     }
   } catch (err) {
     let errorMessage = "";

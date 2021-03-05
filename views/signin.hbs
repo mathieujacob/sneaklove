@@ -4,11 +4,12 @@
     <p class="form-subtitle">Enjoy yourself and be comfortable </p>
   </header>
   {{#if msg}}
-  <p class="message {{msg.status}}">{{msg.text}}</p>
+  <p class=“message {{msg.status}}“>{{msg.text}}</p>
   {{/if}}
+   {{> flash_message }}
   <form method="post" action="/signin" id="form_user">
     <div class="form-item-wrapper flexed-item">
-      <label for="email" class="label-ref label">Email</label>
+      <label for="email” class=“label-ref label">Email</label>
       <input id="email" type="email" class="input-text input" placeholder="albert.biceps@gmail.com" required value="yo@gui.com">
     </div>
     <div class="form-item-wrapper flexed-item">
@@ -17,5 +18,5 @@
     </div>
     <button class="button-primary white">Log in !</button>
   </form>
-  <p class="form-sub-infos">Don't have an account yet ? <a href="/signup" class="button-link-form">Sign Up</a></p>
+  <p class="form-sub-infos">Don’t have an account yet ? <a href="/signup" class="button-link-form">Sign Up</a></p>
 </section>

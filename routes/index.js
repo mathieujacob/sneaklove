@@ -13,6 +13,13 @@ const router = express.Router();
 //   res.render("index", { title: "Express Authentication" });
 // });
 
+// router.get("/signin", (req, res, next) => {
+//   console.log("je suis sur signin");
+//   res.render("/signin");
+//   console.log("je suis sur signin 2");
+// });
+
+
 router.get("/", (req, res) => {
   res.render("index", {title: "yoo"});
 });
@@ -28,14 +35,5 @@ router.get("/sneakers/:id", (req, res) => {
 router.get("/one-product/:id", (req, res) => {
   res.send("one_product");
 });
-
-router.get("/signup", (req, res) => {
-  res.render("signup");
-});
-
-router.get("/signin", (req, res) => {
-  res.render("signin");
-});
-
 
 module.exports = router;
