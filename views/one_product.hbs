@@ -1,9 +1,11 @@
 <div class="one-product-container">
   <div class="sneak-info">
     <div class="sneak-info-header">
-      <h1 class="sneak-name">{{sneaker.name}}</h1>
-      <p class="sneak-description">{{sneaker.description}}</p>
-      <p class="sneak-ref">Ref. {{sneaker.ref}}</p>
+      {{#each sneaker}}
+      <h1 class="sneak-name">{{this.name}}</h1>
+      <p class="sneak-description">{{this.description}}</p>
+      <p class="sneak-ref">Ref. {{this.ref}}</p>
+      {{/each}}
     </div>
   </div>
   <div class="flexed-item">

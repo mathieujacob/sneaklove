@@ -21,12 +21,12 @@ router.get("/", (req, res) => {
 //   res.render("index", {title:"yo"});
 // });
 
-router.get("/sneakers/:cat", (req, res) => {
-  res.send("bar");
+router.get("/sneakers/:id", (req, res) => {
+  res.render("products");
 });
 
 router.get("/one-product/:id", (req, res) => {
-  res.send("baz");
+  res.send("one_product");
 });
 
 router.get("/signup", (req, res) => {

@@ -64,6 +64,10 @@ app.use("/", index);
 const auth = require("./routes/auth");
 app.use("/", auth);
 
+// routers
+const dashboard = require("./routes/dashboard_sneaker");
+app.use("/", dashboard);
+
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
