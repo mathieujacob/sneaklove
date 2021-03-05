@@ -8,7 +8,7 @@ const app = express();
 const createError = require("http-errors");
 const cookieParser = require("cookie-parser");
 const flash = require("connect-flash");
-const hbo = require("hbs");
+const hbs = require("hbs");
 const mongoose = require("mongoose");
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
@@ -20,9 +20,9 @@ app.use(logger("dev"));
 
 // initial config
 app.set("view engine", "hbs");
-app.set("views", __dirname + "/view");
+app.set("views", __dirname + "/views");
 app.use(express.static("public"));
-hbs.registerPartials(__dirname + "/views/partials");
+hbs.registerPartials(__dirname + "/views/partial");
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cookieParser());
@@ -57,7 +57,8 @@ app.use(require("./middlewares/exposeLoginStatus")); // expose le status de conn
 app.use(require("./middlewares/exposeFlashMessage")); // affiche les messages dans le template
 
 // routers
-app.use("/", require("./routes/index"));
+const index = require("./routes/index");
+app.use("/", index);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
